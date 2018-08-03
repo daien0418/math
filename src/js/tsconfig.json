@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outDir": "./RevertList",
+        "allowJs": true,
+        "target": "es5"
+    },
+    "include": [
+        "./js/**/*"
+    ]
+}
