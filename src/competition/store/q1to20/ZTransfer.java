@@ -1,4 +1,4 @@
-package competition.store;
+package competition.store.q1to20;
 
 public class ZTransfer {
 	public String convert(String s, int numRows) {

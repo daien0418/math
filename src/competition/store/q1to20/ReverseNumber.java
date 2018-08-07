@@ -1,4 +1,4 @@
-package competition.store;
+package competition.store.q1to20;
 
 public class ReverseNumber {
 	public int reverse(int x) {
