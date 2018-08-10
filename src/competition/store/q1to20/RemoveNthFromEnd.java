@@ -12,14 +12,16 @@ public class RemoveNthFromEnd {
 			return head;
 		}
 
-		ListNode h = head;
-		while(tail.next!=null){
+		ListNode h = new ListNode(0);
+		h.next=head;
+		head = h;
+		while(tail!=null){
 			h =h.next;
 			tail=tail.next;
 		}
 
 		h.next = h.next.next;
-		return head;
+		return head.next;
 	}
 }
 
