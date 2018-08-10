@@ -1,4 +1,4 @@
-package competition.store.q20to40;
+package competition.store.q21to40;
 
 public class MergeTwoLists {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

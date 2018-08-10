@@ -1,4 +1,4 @@
-package competition.store.q20to40;
+package competition.store.q21to40;
 
 public class StrStr {
 	public int strStr(String haystack, String needle) {
