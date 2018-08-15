@@ -1,41 +1,59 @@
 package competition.store.q81to100;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
-
-import competition.store.q81to100.DeleteDuplicates.ListNode;
 
 public class InorderTraversal {
 	public List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer> list = new ArrayList<Integer>();
+		Set<TreeNode> set = new HashSet<TreeNode>();
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		stack.push(root);
+
 		while(!stack.isEmpty()){
 			TreeNode node = stack.pop();
-			if(node.right!=null){
-				stack.push(node.right);
+			if(set.contains(node)){
+				list.add(node.val);
+				continue;
 			}
 
-			TreeNode cur = node.left;
-			while(cur!=null){
-				if(cur.right!=null){
-					stack.push(cur.right);
+			while(node!=null){
+				if(node.right!=null){
+					stack.push(node.right);
 				}
-
+				stack.push(node);
+				set.add(node);
+				node = node.left;
 			}
+
 		}
 
 		return list;
 	}
 
-	class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
+	public static void main (String args[]){
+		InorderTraversal inorderTraversal =  new InorderTraversal();
+		TreeNode root =  new TreeNode(1);
+		root.right =  new TreeNode(2);
+		root.right.left = new TreeNode(3);
 
-		TreeNode(int x) {
-			val = x;
+		for(int a :inorderTraversal.inorderTraversal(root)){
+			System.out.print(a);
+			System.out.print(" ");
 		}
+	}
+
+}
+
+class TreeNode {
+	int val;
+	TreeNode left;
+	TreeNode right;
+
+	TreeNode(int x) {
+		val = x;
 	}
 }
