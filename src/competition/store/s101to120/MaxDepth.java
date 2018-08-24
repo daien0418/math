@@ -4,6 +4,8 @@ import java.util.Stack;
 
 import javax.print.attribute.standard.Sides;
 
+import competition.structure.TreeNode;
+
 public class MaxDepth {
 
 	public int maxDepth(TreeNode root) {

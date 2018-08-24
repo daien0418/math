@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import competition.structure.TreeNode;
+
 public class InorderTraversal {
 	public List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer> list = new ArrayList<Integer>();
@@ -48,12 +50,3 @@ public class InorderTraversal {
 
 }
 
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int x) {
-		val = x;
-	}
-}

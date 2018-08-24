@@ -2,6 +2,8 @@ package competition.store.s101to120;
 
 import java.util.Stack;
 
+import competition.structure.TreeNode;
+
 public class IsSymmetric {
 	/**
 	 * µü´ú
@@ -58,13 +60,4 @@ public class IsSymmetric {
 
 	}
 
-	class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 }

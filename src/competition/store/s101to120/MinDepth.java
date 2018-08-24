@@ -2,6 +2,8 @@ package competition.store.s101to120;
 
 import java.util.Stack;
 
+import competition.structure.TreeNode;
+
 public class MinDepth {
 
 	public int minDepth(TreeNode root) {
@@ -40,12 +42,3 @@ public class MinDepth {
 
 }
 
-class TreeNode {
-	int val;
-	TreeNode left;
-	TreeNode right;
-
-	TreeNode(int x) {
-		val = x;
-	}
-}

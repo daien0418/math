@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import competition.store.s101to120.IsSymmetric.TreeNode;
+import competition.structure.TreeNode;
 
 public class ZigzagLevelOrder {
 

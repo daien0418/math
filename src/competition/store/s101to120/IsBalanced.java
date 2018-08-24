@@ -2,7 +2,8 @@ package competition.store.s101to120;
 
 import java.util.Stack;
 
-import competition.store.s101to120.IsSymmetric.TreeNode;
+import competition.structure.TreeNode;
+
 
 public class IsBalanced {
 

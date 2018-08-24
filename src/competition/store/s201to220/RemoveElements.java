@@ -1,5 +1,7 @@
 package competition.store.s201to220;
 
+import competition.structure.ListNode;
+
 public class RemoveElements {
 
 	public ListNode removeElements(ListNode head, int val) {

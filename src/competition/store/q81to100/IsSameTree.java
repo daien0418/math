@@ -2,6 +2,8 @@ package competition.store.q81to100;
 
 import java.util.Stack;
 
+import competition.structure.TreeNode;
+
 public class IsSameTree {
 
 	public boolean isSameTree(TreeNode p, TreeNode q) {
@@ -37,13 +39,4 @@ public class IsSameTree {
 
 	}
 
-	class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		TreeNode(int x) {
-			val = x;
-		}
-	}
 }

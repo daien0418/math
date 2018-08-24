@@ -1,5 +1,7 @@
 package competition.store.s201to220;
 
+import competition.structure.ListNode;
+
 public class ReverseList {
 
 	/**
@@ -66,11 +68,3 @@ public class ReverseList {
 
 }
 
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		val = x;
-	}
-}

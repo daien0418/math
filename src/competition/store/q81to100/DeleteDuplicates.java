@@ -1,5 +1,7 @@
 package competition.store.q81to100;
 
+import competition.structure.ListNode;
+
 public class DeleteDuplicates {
 
 	public ListNode deleteDuplicates(ListNode head) {
@@ -29,12 +31,4 @@ public class DeleteDuplicates {
 
 	}
 
-	class ListNode {
-		int val;
-		ListNode next;
-
-		ListNode(int x) {
-			val = x;
-		}
-	}
 }

@@ -1,5 +1,7 @@
 package competition.store.q81to100;
 
+import competition.structure.ListNode;
+
 public class ReverseBetween {
 
 	public ListNode reverseBetween(ListNode head, int m, int n) {
@@ -37,11 +39,3 @@ public class ReverseBetween {
 	}
 }
 
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		val = x;
-	}
-}
