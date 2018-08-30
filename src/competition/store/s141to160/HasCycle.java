@@ -1,5 +1,7 @@
 package competition.store.s141to160;
 
+import competition.structure.ListNode;
+
 public class HasCycle {
 
 	public boolean hasCycle(ListNode head) {
@@ -23,12 +25,4 @@ public class HasCycle {
 		listNode2.next = listNode;
 	}
 
-}
-class ListNode {
-	int val;
-	ListNode next;
-
-	ListNode(int x) {
-		val = x;
-	}
 }
