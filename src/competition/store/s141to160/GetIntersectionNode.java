@@ -10,16 +10,38 @@ public class GetIntersectionNode {
 		}
 		ListNode hA = headA;
 		ListNode hB = headB;
+		int aLen = 0;
+		int bLen = 0;
 		while (hA != null) {
-			if (hB == hA) {
-				return hA;
-			} else {
-				hB = hB.next;
-				if (hB == null) {
-					hA = hA.next;
-					hB = headB;
-				}
+			aLen++;
+			hA = hA.next;
+		}
+		while (hB != null) {
+			bLen++;
+			hB = hB.next;
+		}
+
+		hA = headA;
+		hB = headB;
+		int dep = 0;
+		if (aLen > bLen) {
+			while (dep < aLen - bLen) {
+				dep++;
+				hA = hA.next;
 			}
+		} else {
+			while (dep < bLen - aLen) {
+				dep++;
+				hB = hB.next;
+			}
+		}
+
+		while (hA != null && hB != null) {
+			if (hA == hB) {
+				return hA;
+			}
+			hA = hA.next;
+			hB = hB.next;
 		}
 
 		return null;
