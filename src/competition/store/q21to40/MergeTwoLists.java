@@ -1,5 +1,7 @@
 package competition.store.q21to40;
 
+import competition.structure.ListNode;
+
 public class MergeTwoLists {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		ListNode listNode = new ListNode(0);
@@ -32,8 +34,3 @@ public class MergeTwoLists {
     }
 
 }
- class ListNode {
-     int val;
-     ListNode next;
-     ListNode(int x) { val = x; }
- }
