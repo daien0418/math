@@ -8,21 +8,21 @@ import java.util.Map.Entry;
 
 public class UniquePaths {
 
-	public int uniquePaths(int m, int n) {
+	public long uniquePaths(int m, int n) {
 
 		if (m <= 1 || n <= 1)
 			return 1;
 
-		Map<Point, Integer> map = new HashMap<Point, Integer>();
+		Map<Point, Long> map = new HashMap<Point, Long>();
 		Point start = new Point(1, 1);
-		map.put(start, 1);
+		map.put(start, 1l);
 
 		boolean over = false;
 
 		while (true) {
 
 			Set<Point> set = map.keySet();
-			Map<Point, Integer> nMap = new HashMap<Point, Integer>();
+			Map<Point, Long> nMap = new HashMap<Point, Long>();
 			for (Point p : set) {
 
 				if (p.x == m && p.y == n) {
@@ -56,10 +56,9 @@ public class UniquePaths {
 			}
 		}
 
-
 		Set<Point> set = map.keySet();
-		int sum = 0;
-		for (Point p:set) {
+		long sum = 0l;
+		for (Point p : set) {
 			sum = sum + map.get(p);
 		}
 
@@ -68,7 +67,7 @@ public class UniquePaths {
 
 	public static void main(String[] args) {
 		UniquePaths uniquePaths = new UniquePaths();
-		System.out.println(uniquePaths.uniquePaths(7, 3));
+		System.out.println(uniquePaths.uniquePaths(12, 14));
 	}
 
 	class Point {
