@@ -1,5 +1,7 @@
 package competition.store.q21to40;
 
+import competition.structure.ListNode;
+
 public class SwapPairs {
 	public ListNode swapPairs(ListNode head) {
 		if(head==null||head.next==null) return head;
@@ -21,10 +23,5 @@ public class SwapPairs {
 		return ret.next;
     }
 
-	class ListNode {
-		  int val;
-		  ListNode next;
-		  ListNode(int x) { val = x; }
-	}
 }
 

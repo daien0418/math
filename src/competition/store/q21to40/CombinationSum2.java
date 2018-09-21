@@ -1,20 +1,22 @@
 package competition.store.q21to40;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class CombinationSum {
+public class CombinationSum2 {
 
-	public List<List<Integer>> combinationSum(int[] candidates, int target) {
+	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 		List<List<Integer>> list = new ArrayList<List<Integer>>();
 		List<Integer> temp = new ArrayList<>();
+		Arrays.sort(candidates);
 		help(list, temp, candidates, target, 0);
 		return list;
 	}
 
 	private void help(List<List<Integer>> result, List<Integer> temp, int[] candidates, int target, int n) {
 
-		if (target == 0) {
+		if (target == 0 && !result.contains(temp)) {
 			result.add(new ArrayList<>(temp));
 			return;
 		}
@@ -25,7 +27,8 @@ public class CombinationSum {
 		for (int i = n; i < candidates.length; i++) {
 			target = target - candidates[i];
 			temp.add(candidates[i]);
-			help(result, temp, candidates, target, n++);
+			n++;
+			help(result, temp, candidates, target, n);
 			temp.remove(temp.size() - 1);
 			target = target + candidates[i];
 		}
@@ -33,8 +36,8 @@ public class CombinationSum {
 	}
 
 	public static void main(String[] args) {
-		CombinationSum combinationSum = new CombinationSum();
-		List<List<Integer>> retList = combinationSum.combinationSum(new int[] { 2, 3, 5 }, 10);
+		CombinationSum2 combinationSum2 = new CombinationSum2();
+		List<List<Integer>> retList = combinationSum2.combinationSum2(new int[] { 10, 1, 2, 7, 6, 1, 5 }, 8);
 		for (List<Integer> list : retList) {
 			for (int i : list) {
 				System.out.print(i);
