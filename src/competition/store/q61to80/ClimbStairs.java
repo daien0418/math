@@ -1,45 +1,51 @@
 package competition.store.q61to80;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigInteger;
 
 public class ClimbStairs {
 
 	public int climbStairs(int n) {
-		List<String> list = new ArrayList<String>();
-		list.add(new String(""));
 
-		for (int i = 1; i <= n; i++) {
-			int size = list.size();
-			for (int j = 0; j < size; j++) {
-				String str = list.get(0);
-				if(str.length()==i-1){
-					list.add(str+"1");
-				}else{
-					for (int k = 0; k <= str.length(); k++) {
-						String newStr = str.substring(0, k) + "1" + str.substring(k, str.length());
-						if (!list.contains(newStr)) {
-							list.add(newStr);
-						}
-					}
-				}
-				list.remove(0);
+		int ret = 0;
+
+		int divBy2 = n / 2;
+		for (int i = 0; i <= divBy2; i++) {
+			if (i == 0) {
+				ret = ret + 1;
+				continue;
 			}
-			if (i % 2 == 0) {
-				String ful2 = new String("");
-				for (int m = 0; m < i / 2; m++) {
-					ful2 = ful2 + "2";
-				}
-				list.add(ful2);
-			}
+			int sum = i + n - i * 2;
+			ret = ret + cal(i, sum);
 		}
 
-		return list.size();
+		return ret;
+	}
+
+	private int cal(int sub, int sum) {
+		if (sub == 1) {
+			return sum;
+		}
+
+		if (sub == sum) {
+			return 1;
+		}
+
+		BigInteger div = new BigInteger("1");
+		BigInteger divBy = new BigInteger("1");
+		for (int i = sum; i > sum - sub; i--) {
+			div = div.multiply(new BigInteger(String.valueOf(i)));
+		}
+
+		for (int i = 1; i <= sub; i++) {
+			divBy = divBy.multiply(new BigInteger(String.valueOf(i)));
+		}
+
+		return div.divide(divBy).intValue();
 	}
 
 	public static void main(String[] args) {
 		ClimbStairs climbStairs = new ClimbStairs();
-		System.out.println(climbStairs.climbStairs(20));
+		System.out.println(climbStairs.climbStairs(44));
 	}
 
 }

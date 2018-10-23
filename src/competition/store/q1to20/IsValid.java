@@ -1,5 +1,7 @@
 package competition.store.q1to20;
 
+import java.util.Stack;
+
 public class IsValid {
 	public boolean isValid(String s) {
 
@@ -77,7 +79,44 @@ public class IsValid {
 
 	public static void main(String args[]){
 		IsValid isValid = new IsValid();
-		String string = "[({(())}[()])]";
-		System.out.println(isValid.isValid(string));
+		String string = "(])";
+		System.out.println(isValid.isValid2(string));
 	}
+
+	public boolean isValid2(String s){
+		Stack<Character> stack = new Stack<Character>();
+
+		for(char c:s.toCharArray()){
+			if(stack.isEmpty()){
+				stack.push(c);
+			}else{
+				if(c=='('||c=='['||c=='{'){
+					stack.push(c);
+				}else{
+					if(c==')'){
+						if(stack.peek()=='('){
+							stack.pop();
+						}else{
+							stack.push(c);
+						}
+					}else if(c==']'){
+						if(stack.peek()=='['){
+							stack.pop();
+						}else{
+							stack.push(c);
+						}
+					}else if(c=='}'){
+						if(stack.peek()=='{'){
+							stack.pop();
+						}else{
+							stack.push(c);
+						}
+					}
+				}
+			}
+		}
+
+		return stack.isEmpty();
+	}
+
 }
