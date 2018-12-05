@@ -1,4 +1,4 @@
-package competition.contest100;
+package competition.contest.contest100;
 
 import competition.structure.TreeNode;
 

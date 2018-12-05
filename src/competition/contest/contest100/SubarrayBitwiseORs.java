@@ -1,4 +1,4 @@
-package competition.contest100;
+package competition.contest.contest100;
 
 import java.util.HashSet;
 import java.util.Set;

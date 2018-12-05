@@ -1,4 +1,4 @@
-package competition.contest95;
+package competition.contest.contest95;
 
 public class ProfitableSchemes {
 

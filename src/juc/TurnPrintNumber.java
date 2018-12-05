@@ -4,7 +4,7 @@ package juc;
  * 交替打印
  *
  * @author daien
- * @date 2018年5月25日 
+ * @date 2018年5月25日
  */
 public class TurnPrintNumber {
 

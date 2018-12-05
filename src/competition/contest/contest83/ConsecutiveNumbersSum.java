@@ -1,4 +1,4 @@
-package competition.contest83;
+package competition.contest.contest83;
 
 public class ConsecutiveNumbersSum {
 	public int consecutiveNumbersSum(int N) {

@@ -8,16 +8,15 @@ import java.util.Map;
 
 import competition.structure.TreeNode;
 
-public class FindMode {
+public class FindFrequentTreeSum {
 
-	public int[] findMode(TreeNode root) {
+	public int[] findFrequentTreeSum(TreeNode root) {
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-		find(root, map);
-
-		int times = 0;
+		cal(root, map);
 
 		List<Integer> list = new ArrayList<Integer>();
 		Iterator<Integer> iterator = map.keySet().iterator();
+		int times = 0;
 		while (iterator.hasNext()) {
 			Integer key = iterator.next();
 			if (map.get(key) > times) {
@@ -38,25 +37,30 @@ public class FindMode {
 		return result;
 	}
 
-	private void find(TreeNode root, Map<Integer, Integer> map) {
+	private void cal(TreeNode root, Map<Integer, Integer> map) {
 		if (root == null)
 			return;
-		if (map.get(root.val) == null) {
-			map.put(root.val, 1);
+		int sum = TreeSum(root);
+		if (map.containsKey(sum)) {
+			map.put(sum, map.get(sum) + 1);
 		} else {
-			map.put(root.val, map.get(root.val) + 1);
+			map.put(sum, 1);
 		}
+		if (root.left != null)
+			cal(root.left, map);
+		if (root.right != null)
+			cal(root.right, map);
+	}
 
-		find(root.left, map);
-		find(root.right, map);
+	private int TreeSum(TreeNode root) {
+		if (root == null)
+			return 0;
+
+		return root.val + TreeSum(root.left) + TreeSum(root.right);
 	}
 
 	public static void main(String[] args) {
-		TreeNode root = new TreeNode(1);
-		root.right = new TreeNode(2);
-		root.right.left = new TreeNode(2);
-		FindMode findMode = new FindMode();
-		findMode.findMode(root);
+
 	}
 
 }
