@@ -5,9 +5,7 @@ import competition.structure.TreeNode;
 public class RangeSumBST {
 
 	public int rangeSumBST(TreeNode root, int L, int R) {
-		int sum = 0;
-
-		return sum;
+		return cal(root, L, R);
 	}
 
 	private int cal(TreeNode root, int L, int R) {

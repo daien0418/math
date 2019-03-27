@@ -1,5 +1,7 @@
 package juc;
 
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 /**
  * ½»Ìæ´òÓ¡
  *
@@ -9,6 +11,7 @@ package juc;
 public class TurnPrintNumber {
 
 	public static void main(String args[]){
+
 		Object lock = new Object();
 		new Thread(new Runnable() {
 
