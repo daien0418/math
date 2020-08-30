@@ -1,5 +1,4 @@
 package questions;
-import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTreeCopy {
@@ -30,7 +29,6 @@ public class BinaryTreeCopy {
 			return null;
 		Node node = new Node(r.value, copy2(r.left), copy2(r.right));
 		return node;
-		Queue<E>
 	}
 
 	/**
