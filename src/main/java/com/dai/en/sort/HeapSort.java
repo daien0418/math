@@ -3,6 +3,16 @@ package com.dai.en.sort;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 
+/**
+ *
+ * 步骤一：构造大顶堆
+ * 步骤二：第一个位置是最大的，与末尾互换，末尾为最大； 第一个元素，下沉，前n-1个元素的最大值又在第一个位置；
+ * 第一个位置再与倒数第二个位置互换，如此往复。
+ *
+ *
+ * @author daien
+ * @date 2020年12月31日
+ */
 public class HeapSort {
 
     int[] data = null;
