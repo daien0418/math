@@ -1,6 +1,8 @@
 package com.dai.en.questions;
 import java.util.Stack;
 
+import com.dai.en.competition.structure.TreeNode;
+
 public class BinaryTreeCopy {
 
 	/**
@@ -9,11 +11,11 @@ public class BinaryTreeCopy {
 	 * @param c
 	 * @param r
 	 */
-	public void copy(Node c, Node r) {
+	public void copy(TreeNode c, TreeNode r) {
 		if (c == null || r == null)
 			return;
-		c.left = r.left == null ? null : new Node(r.left.value, null, null);
-		c.right = r.right == null ? null : new Node(r.right.value, null, null);
+		c.left = r.left == null ? null : new TreeNode(r.left.val, null, null);
+		c.right = r.right == null ? null : new TreeNode(r.right.val, null, null);
 		copy(c.left, r.left);
 		copy(c.right, r.right);
 	}
@@ -24,11 +26,11 @@ public class BinaryTreeCopy {
 	 * @param r
 	 * @return
 	 */
-	public Node copy2(Node r) {
+	public TreeNode copy2(TreeNode r) {
 		if (r == null)
 			return null;
-		Node node = new Node(r.value, copy2(r.left), copy2(r.right));
-		return node;
+		TreeNode TreeNode = new TreeNode(r.val, copy2(r.left), copy2(r.right));
+		return TreeNode;
 	}
 
 	/**
@@ -38,27 +40,27 @@ public class BinaryTreeCopy {
 	 * @param r
 	 * @return
 	 */
-	public Node copy3(Node r) {
-		Stack<Node> stack = new Stack<Node>();
-		Stack<Node> cStack = new Stack<Node>();
+	public TreeNode copy3(TreeNode r) {
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		Stack<TreeNode> cStack = new Stack<TreeNode>();
 		stack.push(r);
-		Node retNode = new Node(r.value, null, null);
-		cStack.push(retNode);
+		TreeNode retTreeNode = new TreeNode(r.val, null, null);
+		cStack.push(retTreeNode);
 		while (!stack.isEmpty()) {
-			Node node = stack.pop();
-			Node cNode = cStack.pop();
-			if (node == null)
+			TreeNode TreeNode = stack.pop();
+			TreeNode cTreeNode = cStack.pop();
+			if (TreeNode == null)
 				continue;
-			Node rNode = node.right == null ? null : new Node(node.right.value, null, null);
-			Node lNode = node.left == null ? null : new Node(node.left.value, null, null);
-			cNode.left = lNode;
-			cNode.right = rNode;
-			stack.push(node.right);
-			stack.push(node.left);
-			cStack.push(rNode);
-			cStack.push(lNode);
+			TreeNode rTreeNode = TreeNode.right == null ? null : new TreeNode(TreeNode.right.val, null, null);
+			TreeNode lTreeNode = TreeNode.left == null ? null : new TreeNode(TreeNode.left.val, null, null);
+			cTreeNode.left = lTreeNode;
+			cTreeNode.right = rTreeNode;
+			stack.push(TreeNode.right);
+			stack.push(TreeNode.left);
+			cStack.push(rTreeNode);
+			cStack.push(lTreeNode);
 		}
-		return retNode;
+		return retTreeNode;
 	}
 
 	/**
@@ -66,16 +68,16 @@ public class BinaryTreeCopy {
 	 *
 	 * @param r
 	 */
-	public void print2(Node r) {
-		Stack<Node> stack = new Stack<Node>();
+	public void print2(TreeNode r) {
+		Stack<TreeNode> stack = new Stack<TreeNode>();
 		stack.push(r);
 		while (!stack.isEmpty()) {
-			Node node = stack.pop();
-			if (node == null)
+			TreeNode TreeNode = stack.pop();
+			if (TreeNode == null)
 				continue;
-			System.out.println(node.value);
-			stack.push(node.right);
-			stack.push(node.left);
+			System.out.println(TreeNode.val);
+			stack.push(TreeNode.right);
+			stack.push(TreeNode.left);
 		}
 	}
 
@@ -84,8 +86,8 @@ public class BinaryTreeCopy {
 	 *
 	 * @param r
 	 */
-	public void inPrint(Node r){
-		Stack<Node> stack = new Stack<Node>();
+	public void inPrint(TreeNode r){
+		Stack<TreeNode> stack = new Stack<TreeNode>();
 		while(r!=null||!stack.isEmpty()){
 			while(r!=null){
 				stack.push(r);
@@ -93,9 +95,28 @@ public class BinaryTreeCopy {
 			}
 
 			r=stack.pop();
-			System.out.println(r.value);
+			System.out.println(r.val);
 			r=r.right;
 		}
+	}
+
+	public void inPrint2(TreeNode r){
+	    Stack<TreeNode> stack = new Stack<TreeNode>();
+	    stack.push(r);
+	    while(!stack.isEmpty()){
+	        r = stack.pop();
+	        if(r==null)
+	            continue;
+	        if(r.left==null&&r.right==null){
+	            System.out.println(r.val);
+	            continue;
+	        }
+	        stack.push(r.right);
+	        stack.push(r);
+	        stack.push(r.left);
+	        r.left = null;
+	        r.right = null;
+	    }
 	}
 
 	/**
@@ -103,9 +124,9 @@ public class BinaryTreeCopy {
 	 *	passed为刚刚访问过的节点
 	 * @param r
 	 */
-	public void postPrint(Node r){
-		Stack<Node> stack = new Stack<Node>();
-		Node passed=null;
+	public void postPrint(TreeNode r){
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		TreeNode passed=null;
 		while(r!=null||!stack.isEmpty()){
 			while (r != null) {
                 stack.push(r);
@@ -116,22 +137,43 @@ public class BinaryTreeCopy {
                 r = stack.peek().right;
                 if (r == null || r == passed) {
                     r = stack.pop();
-                    System.out.println(r.value);
+                    System.out.println(r.val);
                     passed = r;
                     r = null;
                 }
             }
 		}
 	}
+
+	public static void postPrint2(TreeNode r){
+	    Stack<TreeNode> stack = new Stack<TreeNode>();
+	    stack.push(r);
+	    while(!stack.isEmpty()){
+	        r = stack.pop();
+	        if(r==null){
+	           continue;
+	        }
+	        if(r.left == null&&r.right == null){
+	            System.out.println(r.val);
+	            continue;
+	        }
+	        stack.push(r);
+	        stack.push(r.right);
+	        stack.push(r.left);
+	        r.left = null;
+	        r.right = null;
+	    }
+	}
+
 	/**
 	 * 层次遍历
 	 * 两个stack实现queue
 	 *
 	 * @param r
 	 */
-	public void print3(Node r){
-		Stack<Node> inStack = new Stack<Node>();
-		Stack<Node> outStack = new Stack<Node>();
+	public void print3(TreeNode r){
+		Stack<TreeNode> inStack = new Stack<TreeNode>();
+		Stack<TreeNode> outStack = new Stack<TreeNode>();
 		inStack.push(r);
 		while(!inStack.isEmpty()||!outStack.isEmpty()){
 			if(outStack.isEmpty()){
@@ -140,12 +182,12 @@ public class BinaryTreeCopy {
 				}
 			}
 
-			Node node = outStack.pop();
-			if(node == null)
+			TreeNode TreeNode = outStack.pop();
+			if(TreeNode == null)
 				continue;
-			System.out.println(node.value);
-			inStack.push(node.left);
-			inStack.push(node.right);
+			System.out.println(TreeNode.val);
+			inStack.push(TreeNode.left);
+			inStack.push(TreeNode.right);
 		}
 	}
 
@@ -155,10 +197,10 @@ public class BinaryTreeCopy {
 	 *
 	 * @param root
 	 */
-	public void print(Node root) {
+	public void print(TreeNode root) {
 		if (root == null)
 			return;
-		System.out.println(root.value);
+		System.out.println(root.val);
 		print(root.left);
 		print(root.right);
 	}
@@ -171,39 +213,25 @@ public class BinaryTreeCopy {
 		 *         5    6
 		 *
 		 */
-		Node r3 = new Node("6", null, null);
-		Node l3 = new Node("5", null, null);
-		Node r2 = new Node("4", l3, r3);
-		Node l2 = new Node("3", null, null);
-		Node r = new Node("2", null, null);
-		Node l = new Node("1", l2, r2);
-		Node root = new Node("0", l, r);
+		TreeNode r3 = new TreeNode(6, null, null);
+		TreeNode l3 = new TreeNode(5, null, null);
+		TreeNode r2 = new TreeNode(4, l3, r3);
+		TreeNode l2 = new TreeNode(3, null, null);
+		TreeNode r = new TreeNode(2, null, null);
+		TreeNode l = new TreeNode(1, l2, r2);
+		TreeNode root = new TreeNode(0, l, r);
 		BinaryTreeCopy binaryTreeCopy = new BinaryTreeCopy();
-		binaryTreeCopy.postPrint(root);
+		binaryTreeCopy.postPrint2(root);
 		// binaryTreeCopy.print2(root);
-		// Node copyRoot = new Node(root.value, null, null);
+		// TreeNode copyRoot = new TreeNode(root.val, null, null);
 		// binaryTreeCopy.copy(copyRoot, root);
 		// binaryTreeCopy.print(copyRoot);
 		//
 		// copyRoot = binaryTreeCopy.copy2(root);
 		// binaryTreeCopy.print(copyRoot);
 
-//		Node copyRoot = binaryTreeCopy.copy3(root);
+//		TreeNode copyRoot = binaryTreeCopy.copy3(root);
 //		binaryTreeCopy.print(copyRoot);
-	}
-
-}
-
- class Node {
-	public String value;
-	public Node left;
-	public Node right;
-
-	public Node(String value, Node left, Node right) {
-		super();
-		this.value = value;
-		this.left = left;
-		this.right = right;
 	}
 
 }

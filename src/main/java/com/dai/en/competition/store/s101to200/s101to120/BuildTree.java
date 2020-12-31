@@ -1,7 +1,15 @@
 package com.dai.en.competition.store.s101to200.s101to120;
 
 import com.dai.en.competition.structure.TreeNode;
+import com.dai.en.questions.BinaryTreeCopy;
 
+/**
+ * 105
+ * 根据前序和中序，构造二叉树
+ *
+ * @author daien
+ * @date 2020年12月22日
+ */
 public class BuildTree {
 
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
@@ -43,7 +51,7 @@ public class BuildTree {
 		int[] preorder = new int[] { 3, 9, 20, 15, 7 };
 		int[] inorder = new int[] { 9, 3, 15, 20, 7 };
 		TreeNode reTreeNode = buildTree.buildTree(preorder, inorder);
-		System.out.println(reTreeNode);
+		BinaryTreeCopy.postPrint2(reTreeNode);
 	}
 
 }
